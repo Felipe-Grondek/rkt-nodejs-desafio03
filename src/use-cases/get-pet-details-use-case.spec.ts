@@ -29,7 +29,7 @@ describe('Get Pet Details Use Case', () => {
       id: 'pet-01',
     })
 
-    const { pet } = await sut.execute({ pet_id: 'pet-01' })
+    const { pet } = await sut.execute({ id: 'pet-01' })
 
     expect(pet.name).toEqual('Pet')
   })
@@ -37,7 +37,7 @@ describe('Get Pet Details Use Case', () => {
   it('should not be able to get a pet detail with invalid id', async () => {
     await expect(async () => {
       await sut.execute({
-        pet_id: 'invalid pet id',
+        id: 'invalid pet id',
       })
     }).rejects.toBeInstanceOf(PetNotFoundError)
   })
